@@ -1,16 +1,16 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "username": "admin1",
-        "password": "123",
-        "role": "admin"
-      },
-      {
-        "id": 2,
-        "username": "candidate1",
-        "password": "123",
-        "role": "candidate"
-      }
-    ]
-  }
+  "users": [
+    {
+      "id": 1,
+      "username": "admin1",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "candidate1",
+      "password": "123",
+      "role": "candidate"
+    }
+  ]
+}

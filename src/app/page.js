@@ -1,35 +1,35 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import Cookies from "js-cookie";
+import { isAuthenticated } from "@/services/auth";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
-  const [user, setUser] = useState(null);
+const Home = () => {
+  const [user, setUser] = useState({});
   const router = useRouter();
+  console.log(user);
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      router.push("/login");
+    } else {
+      const userRole = Cookies.get("userRole");
+      const userName = Cookies.get("userName");
+      setUser({ userName: userName, userRole: userRole});
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   const userData = localStorage.getItem('user');
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
-  //   if (userData) {
-  //     setUser(JSON.parse(userData));
-  //   } else {
-  //     router.push('/login');
-  //   }
-  // }, [router]);
-
-  // if (!user) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // Conditionally render based on user role
   return (
-    <div className="p-8">
-      {/* <h1 className="text-3xl font-bold">Welcome, {user.username}!</h1> */}
+    <div>
+      <Header userName={user.userName} userRole={user.userRole} />
+      {/* {user.userRole === "admin" ? (
         <AdminHomePage />
-
-      {/* {user.role === 'admin' ? (
-        <AdminHomePage />
-      ) : user.role === 'candidate' ? (
+      ) : user.userRole === "candidate" ? (
         <CandidateHomePage />
       ) : (
         <p className="text-red-500">Error: Unknown role</p>
@@ -38,28 +38,4 @@ export default function Home() {
   );
 }
 
-const AdminHomePage = () => {
-  return (
-    <div className="mt-6">
-      <h2 className="text-xl font-semibold">Admin Dashboard</h2>
-      <ul className="mt-4 space-y-2">
-        <li className="p-4 bg-blue-100 rounded">Manage Users</li>
-        <li className="p-4 bg-blue-100 rounded">View All Resumes</li>
-        <li className="p-4 bg-blue-100 rounded">Analytics</li>
-      </ul>
-    </div>
-  );
-}
-
-const CandidateHomePage = () => {
-  return (
-    <div>
-      <h2 className="text-xl font-semibold">Candidate Dashboard</h2>
-      <ul className="mt-4 space-y-2">
-        <li className="p-4 bg-green-100 rounded">View My Resume</li>
-        <li className="p-4 bg-green-100 rounded">Edit Resume</li>
-        <li className="p-4 bg-green-100 rounded">Job Applications</li>
-      </ul>
-    </div>
-  )
-}
+export default Home;
