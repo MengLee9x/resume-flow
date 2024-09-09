@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CommonInfoArea from "@/containers/CommonInfoArea";
+import CommonInfoArea from "@/components/CommonInfoArea";
 import Header from "@/components/Header";
 import Home from "@/components/Home";
 import ResumeTab from "@/components/ResumeTab";
