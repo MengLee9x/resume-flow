@@ -18,7 +18,7 @@ const Home = () => {
             <div className="grid grid-cols-2 gap-8 mt-4">
                 {skillContent.map(skill => {
                     const { profession, description, color, id } = skill
-                    return <ContentCard title={profession} content={description} classname={`bg-${color}`} key={id} />
+                    return <ContentCard title={profession} content={description} classname={color} key={id} />
                 })}
             </div>
         </div>
