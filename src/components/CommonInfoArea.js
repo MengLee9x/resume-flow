@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import SocialButton from "./SocialButton";
 import { profileData } from "@/data/mockUserData";
+import DownloadButton from "./DownloadButton";
 
 const CommonInfoArea = () => {
   const { profileImage, name, position, socialLinks, phone, email, location } =
@@ -25,12 +26,12 @@ const CommonInfoArea = () => {
           <p className="text-gray-600 mt-3">{position}</p>
         </div>
 
-        <div className="flex justify-center space-x-2 mb-6">
+        <div className="flex justify-center space-x-2 mb-7">
           {socialLinks.facebook && (
             <SocialButton icon="Facebook" link={socialLinks.facebook} />
           )}
           {socialLinks.linkedin && (
-           <SocialButton icon="Linkedin" link={socialLinks.linkedin} />
+            <SocialButton icon="Linkedin" link={socialLinks.linkedin} />
           )}
           {socialLinks.twitter && (
             <SocialButton icon="Twitter" link={socialLinks.twitter} />
@@ -40,15 +41,39 @@ const CommonInfoArea = () => {
           )}
         </div>
 
-        <div className="bg-background rounded-lg p-8 m-[12px]">
-          <div className="flex items-center mb-2">
-            <span className="text-black">{phone}</span>
-          </div>
-          <div className="flex items-center mb-2">
-            <span className="text-black">{email}</span>
-          </div>
-          <div className="flex items-center">
-            <span className="text-black">{location}</span>
+        <div className="bg-background rounded-3xl p-8 m-[10px]">
+          <div className="flex flex-col space-y-6">
+            <div className="flex items-start">
+              {/* <FaPhone className="text-gray-500 mt-1 mr-4" size={20} /> */}
+              <div className="flex flex-col">
+                <span className="font-semibold text-gray-700">Phone</span>
+                <span className="text-black">{phone}</span>
+              </div>
+            </div>
+            <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
+
+            <div className="flex items-start">
+              {/* <FaEnvelope className="text-gray-500 mt-1 mr-4" size={20} /> */}
+              <div className="flex flex-col">
+                <span className="font-semibold text-gray-700">Email</span>
+                <span className="text-black">{email}</span>
+              </div>
+            </div>
+            <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
+
+            <div className="flex items-start">
+              {/* <FaMapMarkerAlt className="text-gray-500 mt-1 mr-4" size={20} /> */}
+              <div className="flex flex-col">
+                <span className="font-semibold text-gray-700">Location</span>
+                <span className="text-black">{location}</span>
+              </div>
+            </div>
+            <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
+
+            <div className="flex justify-center">
+              {/* <FaMapMarkerAlt className="text-gray-500 mt-1 mr-4" size={20} /> */}
+              <DownloadButton />
+            </div>
           </div>
         </div>
       </div>

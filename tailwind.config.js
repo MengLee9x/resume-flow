@@ -13,8 +13,11 @@ module.exports = {
         primary: "#ff9c1a",
         accent: "#ec1b09",
         softOrange: "#FFEBD1",
-        paleBlue: "F2F7FC",
-        paleBlueGray: "#E1E8EF"
+        paleBlue: "f2f7fc",
+        paleBlueGray: "#E1E8EF",
+        translucentDarkBrown: "#1A100380",
+        warmSand: "#FFEED9",
+        dividerColor: "#E3E3E3"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

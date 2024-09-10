@@ -1,4 +1,9 @@
 import { Inter } from "next/font/google";
+import { UserProvider } from '@/contexts/UserContext';
+import { TabProvider } from '@/contexts/TabContext';
+import CommonTabArea from '@/components/CommonTabArea';
+import CommonInfoArea from '@/components/CommonInfoArea';
+import Header from "@/components/Header";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,7 +16,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <UserProvider>
+          <TabProvider>
+            <Header />
+            <div className="h-screen bg-background">
+              <div className="container mx-auto">
+                <div className="flex-grow flex flex-col lg:flex-row pt-3">
+                  <div className="lg:w-2/5 p-4">
+                    <CommonInfoArea />
+                  </div>
+                  <div className="flex flex-col lg:w-3/5 p-4">
+                    <CommonTabArea />
+                    {children}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabProvider>
+        </UserProvider>
+      </body>
     </html>
   );
 }

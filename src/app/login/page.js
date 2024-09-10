@@ -12,14 +12,13 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    // Mock login logic (Replace with your mock API call)
     try {
       const user = await authenticate(username, password);
       if (user) {
         router.push("/");
       }
     } catch (error) {
-      setError(error.message); // Display error message
+      setError(error.message);
     }
   };
 
@@ -77,6 +76,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
