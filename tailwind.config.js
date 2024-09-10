@@ -12,7 +12,7 @@ module.exports = {
         background: "#f2f5f9",
         primary: "#ff9c1a",
         accent: "#ec1b09",
-        softOrange: "#FFEBD1",
+        softOrange: "#ffebd1",
         paleBlue: "f2f7fc",
         paleBlueGray: "#E1E8EF",
         translucentDarkBrown: "#1A100380",

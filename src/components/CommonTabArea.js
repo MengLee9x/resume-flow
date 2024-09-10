@@ -7,7 +7,7 @@ const CommonTabArea = () => {
     const { activeTab, setActiveTab } = useTab();
 
     return (
-        <div className="lg:w-3/5 flex gap-2 flex-col h-full">
+        <div className="lg:w-full flex-col">
             <div className="flex justify-end">
                 <nav className="bg-paleBlue border-4 border-paleBlueGray px-5 py-2 rounded-2xl">
                     <ul className="flex gap-4">
