@@ -44,7 +44,6 @@ const CommonInfoArea = () => {
         <div className="bg-background rounded-3xl p-8 m-[10px]">
           <div className="flex flex-col space-y-6">
             <div className="flex items-start">
-              {/* <FaPhone className="text-gray-500 mt-1 mr-4" size={20} /> */}
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-700">Phone</span>
                 <span className="text-black">{phone}</span>
@@ -53,7 +52,6 @@ const CommonInfoArea = () => {
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
             <div className="flex items-start">
-              {/* <FaEnvelope className="text-gray-500 mt-1 mr-4" size={20} /> */}
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-700">Email</span>
                 <span className="text-black">{email}</span>
@@ -62,7 +60,6 @@ const CommonInfoArea = () => {
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
             <div className="flex items-start">
-              {/* <FaMapMarkerAlt className="text-gray-500 mt-1 mr-4" size={20} /> */}
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-700">Location</span>
                 <span className="text-black">{location}</span>
@@ -71,7 +68,6 @@ const CommonInfoArea = () => {
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
             <div className="flex justify-center">
-              {/* <FaMapMarkerAlt className="text-gray-500 mt-1 mr-4" size={20} /> */}
               <DownloadButton />
             </div>
           </div>

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/contexts/UserContext";
 import { removeToken } from "@/services/auth";
@@ -34,10 +35,12 @@ const Header = () => {
         </div>
         <div className="flex items-center space-x-4">
 
-          <button className="p-2 bg-gray-200 rounded" onClick={handleDarkModeToggle}>Dark Mode</button>
+          <button className="w-12 h-12 rounded-full border-2 border-paleBlueGray flex items-center justify-center bg-paleBlue hover:bg-gray-100 transition-colors duration-200" onClick={handleDarkModeToggle}>
+            <Image src="/images/dark_mode.png" alt="Dark Mode" width={20} height={20} />
+          </button>
           {user && <button
             onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
           >
             Logout
           </button>}
