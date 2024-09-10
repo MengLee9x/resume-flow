@@ -13,6 +13,7 @@ pnpm dev
 # or
 bun dev
 ```
+And then use this command to run the mock server from port 5000 which is hard coded in the project: npx json-server --watch db.json --port 5000 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
