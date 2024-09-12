@@ -13,7 +13,3 @@ export const setToken = (token) => {
 export const getToken = () => {
   return Cookies.get("accesstoken");
 };
-
-export const removeToken = () => {
-  Cookies.remove("accessToken");
-};

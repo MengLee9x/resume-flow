@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import { logout } from "@/services/logout";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/contexts/UserContext";
 import { removeToken } from "@/services/auth";
@@ -10,11 +11,13 @@ const Header = () => {
   const { userName, userRole } = user || {};
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     try {
-      removeToken();
-      clearUser();
-      router.push("/login");
+      const response = await logout();
+      if (response.success) {
+        clearUser();
+        router.push("/login");
+      }
     } catch (error) {
       console.error("Logout failed:", error);
     }
