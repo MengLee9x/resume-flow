@@ -1,27 +1,29 @@
-import axios from "axios";
 import { setToken } from "./auth";
 import { v4 as uuidv4 } from "uuid";
 import Cookies from "js-cookie";
 
-const API_URL = "http://localhost:5000/users";
-
 export const authenticate = async (username, password) => {
   try {
-    const response = await axios.get(
-      `${API_URL}?username=${username}&password=${password}`
-    );
-    const users = response.data;
+    const response = await fetch('http://localhost:4000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-    if (users.length > 0) {
-      const user = users[0];
-      const token = uuidv4();
-      setToken(token);
-      Cookies.set("userRole", user.role, { expires: 1 })
-      Cookies.set("userName", user.username, { expires: 1 })
-      return { success: true, token };
-    } else {
-      throw new Error("Invalid credentials");
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    const data = await response.json();
+    const userName = data.user;
+    const userRole = data.role;
+    const token = uuidv4()
+    setToken(token);
+    Cookies.set("userRole", userRole, { expires: 1 })
+    Cookies.set("userName", userName, { expires: 1 })
+    return { success: true, token: data.token };
   } catch (error) {
     throw new Error("Error during authentication");
   }
