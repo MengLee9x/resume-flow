@@ -9,18 +9,16 @@ const CommonInfoArea = () => {
     profileData;
 
   return (
-    <div className="max-w-md mx-auto">
-      <div>
-        <Image
-          className="m-auto translate-y-10"
-          src={profileImage}
-          alt="beatrice-wambui"
-          width={200}
-          height={200}
-        />
-      </div>
+    <div className='relative'>
+      <Image
+        className="absolute -top-24 left-[calc(50%-100px)]"
+        src={profileImage}
+        alt="beatrice-wambui"
+        width={200}
+        height={200}
+      />
 
-      <div className="bg-white rounded-2xl px-8 py-10">
+      <div className="bg-white rounded-2xl pt-28 pb-6 py-10 mt-[110px]">
         <div className="text-center mb-4 mt-4">
           <h2 className="text-2xl font-bold text-black">{name}</h2>
           <p className="text-gray-600 mt-3">{position}</p>
@@ -41,7 +39,7 @@ const CommonInfoArea = () => {
           )}
         </div>
 
-        <div className="bg-background rounded-3xl p-8 m-[10px]">
+        <div className="bg-background rounded-3xl p-8">
           <div className="flex flex-col space-y-6">
             <div className="flex items-start">
               <div className="flex flex-col">

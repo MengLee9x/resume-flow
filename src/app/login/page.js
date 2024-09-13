@@ -3,18 +3,22 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authenticate } from "../../services/login";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "@/lib/features/user/userSlice";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
+  const dispatch = useDispatch()
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const user = await authenticate(username, password);
       if (user) {
+        dispatch(setUser(user))
         router.push("/");
       }
     } catch (error) {

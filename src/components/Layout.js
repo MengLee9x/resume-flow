@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Cookies from "js-cookie";
 import Header from "./Header";
@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { isAuthenticated } from "@/services/auth";
 import CommonTabArea from "./CommonTabArea";
 import CommonInfoArea from "./CommonInfoArea";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUser, setUser } from "@/lib/features/user/userSlice";
 
 const Container = styled.div`
     height: 100vh;
@@ -15,7 +17,6 @@ const Container = styled.div`
 `;
 
 const LeftSidebar = styled.div`
-    padding-top: 14px;
 
     @media (min-width: 1024px) {
         width: 40%;
@@ -31,8 +32,8 @@ const RightSidebar = styled.div`
 const StyledMain = styled.main`
     flex-grow: 1;
     border-radius: 16px;
-    padding: 1.25rem 4rem 1.25rem 4rem;
-    margin-top: 8px;
+    padding: 1.25rem 0 1.25rem 4rem;
+    margin-top: 4px;
 `
 
 const PageBody = styled.div`
@@ -46,13 +47,14 @@ const PageBody = styled.div`
     }
 }
 `
-
 export default function Layout({ children }) {
-    const [user, setUser] = useState({ userName: "", userRole: "" });
+    const dispatch = useDispatch()
     const router = useRouter();
+    const { user } = useSelector(state => state.user);
 
-    const clearUser = () => {
-        setUser({});
+    const handleClearUser = () => {
+        dispatch(clearUser());
+        router.push("/login");
     }
 
     useEffect(() => {
@@ -62,12 +64,11 @@ export default function Layout({ children }) {
             const userRole = Cookies.get("userRole");
             const userName = Cookies.get("userName");
 
-            setUser({ userName: userName, userRole: userRole });
+            dispatch(setUser({ userName: userName, userRole: userRole }));
         }
-    }, [Cookies.get("userRole"), Cookies.get("userName")]);
+    }, []);
 
-    console.log("user: ", user);
-    if (user.userName === "") {
+    if (!user || user.userName === "") {
         return (<html lang="en">
             <body>
                 {children}
@@ -77,7 +78,7 @@ export default function Layout({ children }) {
 
     return (
         <Container>
-            <Header user={user} clearUser={clearUser} />
+            <Header user={user || {}} clearUser={handleClearUser} />
             <div className="container mx-auto">
                 <PageBody>
                     <LeftSidebar>
@@ -85,10 +86,11 @@ export default function Layout({ children }) {
                     </LeftSidebar>
                     <RightSidebar>
                         <CommonTabArea />
+                        <StyledMain>
+                            {children}
+                        </StyledMain>
                     </RightSidebar>
-                    <StyledMain>
-                        {children}
-                    </StyledMain>
+
                 </PageBody>
             </div>
         </Container>
