@@ -1,7 +1,10 @@
 "use client"
 
 import React from 'react';
-import SectionHeader from "./SectionHeader"
+import SectionHeader from "@/components/SectionHeader"
+import styled from 'styled-components';
+
+
 
 const ResumeSection = ({ title, items }) => (
     <div className="mb-6">
@@ -61,7 +64,7 @@ const ResumeTab = () => {
     const softSkills = ['Time Management', 'Mentorship', 'Impeccable Communication', 'Flexibility', 'Research', 'Writing'];
 
     return (
-        <div className="max-w-3xl mx-auto bg-white">
+        <div className="bg-white p-5 rounded-2xl">
             <SectionHeader header="Resume" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <ResumeSection title="Education" items={education} />

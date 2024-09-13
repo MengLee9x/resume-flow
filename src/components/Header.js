@@ -3,13 +3,10 @@
 import Image from "next/image";
 import { logout } from "@/services/logout";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/contexts/UserContext";
-import { removeToken } from "@/services/auth";
 
-const Header = () => {
-  const { user, clearUser } = useUser();
-  const { userName, userRole } = user || {};
+const Header = ({ user, clearUser }) => {
   const router = useRouter();
+  const { userName, userRole } = user;
 
   const handleLogout = async () => {
     try {

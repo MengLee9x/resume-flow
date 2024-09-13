@@ -23,7 +23,7 @@ export const authenticate = async (username, password) => {
     setToken(token);
     Cookies.set("userRole", userRole, { expires: 1 })
     Cookies.set("userName", userName, { expires: 1 })
-    return { success: true, token: data.token };
+    return { success: true, token: data.token, userName, userRole };
   } catch (error) {
     throw new Error("Error during authentication");
   }
