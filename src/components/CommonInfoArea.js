@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import SocialButton from "./SocialButton";
 import DownloadButton from "./DownloadButton";
+import UserInfoDetail from "./UserInfoDetail";
 import { getCommonInfo } from "@/services/commonInfo";
 
 const CommonInfoArea = () => {
@@ -50,28 +51,14 @@ const CommonInfoArea = () => {
 
         <div className="bg-background rounded-3xl p-8">
           <div className="flex flex-col space-y-6">
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Phone</span>
-                <span className="text-black">{phone}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="phone" text="Phone" detail={phone} />
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Email</span>
-                <span className="text-black">{email}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="email" text="Email" detail={email} />
+
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Location</span>
-                <span className="text-black">{location}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="location" text="Location" detail={location} />
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
             <div className="flex justify-center">

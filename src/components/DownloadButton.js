@@ -6,9 +6,9 @@ const DownloadButton = ({ icon, text = "Download Resume" }) => {
     );
 
     return (
-        <button className="flex items-center px-4 py-3 bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out">
+        <button className="flex items-center px-4 py-3 bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold rounded-3xl shadow-md hover:shadow-lg transition duration-300 ease-in-out">
             {icon || <DefaultIcon />}
-            {text}
+            <span className="text-sm">{text}</span>
         </button>
     );
 }
