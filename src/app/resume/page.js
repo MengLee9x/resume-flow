@@ -2,14 +2,23 @@
 
 import React from 'react';
 import SectionHeader from "@/components/SectionHeader"
+import StyledWrapper from "@/components/common/MainContentWrapper"
+import Image from "next/image";
 import styled from 'styled-components';
 
+const StyledResumeSection = styled.div`
+    border-radius: 0 0 16px 16px;
+    padding: 0 4rem;
+    background: #F8FBFB;
+`
 
-
-const ResumeSection = ({ title, items }) => (
+const ResumeSection = ({ title, items, icon }) => (
     <div className="mb-6">
-        <h2 className="text-3xl font-bold mb-5 text-gray-800">{title}</h2>
-        <div className="space-y-5">
+        <div className='flex flex-row gap-2 mb-7'>
+            <Image src={`/images/${icon}.svg`} alt={icon} width={32} height={32} />
+            <h2 className="text-3xl font-bold text-gray-800">{title}</h2>
+        </div>
+        <div className="space-y-5 gap-10">
             {items.map((item, index) => (
                 <div key={index} className="bg-orange-100 px-3 py-5 rounded-lg">
                     <p className="text-sm text-translucentDarkBrown">{item.year}</p>
@@ -21,13 +30,14 @@ const ResumeSection = ({ title, items }) => (
     </div>
 );
 
-const SkillSection = ({ title, skills }) => (
+const SkillSection = ({ title, skills, icon }) => (
     <div className="mb-6">
         <h2 className="text-3xl font-bold mb-3 mt-3 text-gray-800">{title}</h2>
         <div className="flex flex-wrap gap-2">
             {skills.map((skill, index) => (
                 <span key={index} className="
-                    bg-paleBlueGray inline-flex
+                    bg-paleBlueGray 
+                    inline-flex
                     items-center
                     justify-center
                     rounded-[8px]
@@ -36,7 +46,6 @@ const SkillSection = ({ title, skills }) => (
                     py-1
                     text-sm
                     font-semibold
-                    bg-gray-200
                     text-gray-700
                     mr-2
                     mb-2
@@ -64,17 +73,22 @@ const ResumeTab = () => {
     const softSkills = ['Time Management', 'Mentorship', 'Impeccable Communication', 'Flexibility', 'Research', 'Writing'];
 
     return (
-        <div className="bg-white p-5 rounded-2xl">
-            <SectionHeader header="Resume" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <ResumeSection title="Education" items={education} />
-                <ResumeSection title="Experience" items={experience} />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <SkillSection title="Work Skills" skills={workSkills} />
-                <SkillSection title="Soft Skills" skills={softSkills} />
-            </div>
-        </div>
+        <>
+            <StyledWrapper bottomLeft="0" bottomRight="0">
+                <SectionHeader header="Resume" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <ResumeSection title="Education" items={education} icon="degree_hat" />
+                    <ResumeSection title="Experience" items={experience} icon="humbleicons_briefcase" />
+                </div>
+            </StyledWrapper>
+            <StyledResumeSection>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <SkillSection title="Work Skills" skills={workSkills} />
+                    <SkillSection title="Soft Skills" skills={softSkills} />
+                </div>
+            </StyledResumeSection>
+        </>
+
     );
 };
 

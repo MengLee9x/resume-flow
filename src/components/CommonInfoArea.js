@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import SocialButton from "./SocialButton";
-import { profileData } from "@/data/mockUserData";
 import DownloadButton from "./DownloadButton";
+import UserInfoDetail from "./UserInfoDetail";
+import { getCommonInfo } from "@/services/commonInfo";
 
 const CommonInfoArea = () => {
-  const { profileImage, name, position, socialLinks, phone, email, location } =
-    profileData;
+  const [commonInfo, setCommonInfo] = useState({});
+
+  useEffect(() => {
+    const fetchCommonInfo = async () => {
+      const info = await getCommonInfo();
+      setCommonInfo(info);
+    };
+    fetchCommonInfo();
+  }, []);
+
+  const { name, position, socialLinks, phone, email, location, profileImage } = commonInfo || {};
 
   return (
     <div className='relative'>
@@ -18,51 +28,37 @@ const CommonInfoArea = () => {
         height={200}
       />
 
-      <div className="bg-white rounded-2xl pt-28 pb-6 py-10 mt-[110px]">
+      <div className="bg-white rounded-2xl pt-28 pb-16 pl-7 pr-7 mt-[110px]">
         <div className="text-center mb-4 mt-4">
           <h2 className="text-2xl font-bold text-black">{name}</h2>
           <p className="text-gray-600 mt-3">{position}</p>
         </div>
 
-        <div className="flex justify-center space-x-2 mb-7">
-          {socialLinks.facebook && (
+        <div className="flex justify-center space-x-2 mb-6">
+          {socialLinks?.facebook && (
             <SocialButton icon="Facebook" link={socialLinks.facebook} />
           )}
-          {socialLinks.linkedin && (
+          {socialLinks?.linkedin && (
             <SocialButton icon="Linkedin" link={socialLinks.linkedin} />
           )}
-          {socialLinks.twitter && (
+          {socialLinks?.twitter && (
             <SocialButton icon="Twitter" link={socialLinks.twitter} />
           )}
-          {socialLinks.github && (
+          {socialLinks?.github && (
             <SocialButton icon="Github" link={socialLinks.github} />
           )}
         </div>
 
         <div className="bg-background rounded-3xl p-8">
           <div className="flex flex-col space-y-6">
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Phone</span>
-                <span className="text-black">{phone}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="phone" text="Phone" detail={phone} />
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Email</span>
-                <span className="text-black">{email}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="email" text="Email" detail={email} />
+
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
-            <div className="flex items-start">
-              <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">Location</span>
-                <span className="text-black">{location}</span>
-              </div>
-            </div>
+            <UserInfoDetail icon="location" text="Location" detail={location} />
             <div className="w-5/6 h-px bg-dividerColor mx-auto"></div>
 
             <div className="flex justify-center">
