@@ -4,6 +4,7 @@ import React from 'react';
 import SectionHeader from "@/components/SectionHeader"
 import StyledWrapper from "@/components/common/MainContentWrapper"
 import Image from "next/image";
+import { withAdminAuth } from '@/hooks/withAdminAuth';
 import styled from 'styled-components';
 
 const StyledResumeSection = styled.div`
@@ -92,4 +93,4 @@ const ResumeTab = () => {
     );
 };
 
-export default ResumeTab;
+export default withAdminAuth(ResumeTab);

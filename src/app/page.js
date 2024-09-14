@@ -4,6 +4,7 @@ import SectionHeader from "@/components/SectionHeader";
 import { skillContent } from "@/constant/HomeComponentDetails";
 import ContentCard from "@/components/ContentCard";
 import StyledWrapper from "@/components/common/MainContentWrapper";
+import { withAdminAuth } from "@/hooks/withAdminAuth";
 
 const HomePage = () => {
   return (<StyledWrapper height="100%">
@@ -27,4 +28,4 @@ const HomePage = () => {
   )
 };
 
-export default HomePage;
+export default withAdminAuth(HomePage);

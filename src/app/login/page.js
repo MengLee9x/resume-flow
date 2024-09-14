@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authenticate } from "../../services/login";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,14 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const dispatch = useDispatch()
+
+  const { user } = useSelector((state) => state.user)
+
+  useEffect(() => {
+    if (user) {
+      router.push("/")
+    }
+  }, [user, router])
 
   const handleLogin = async (e) => {
     e.preventDefault();

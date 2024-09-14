@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const LeftSidebar = styled.div`
 
-    @media (min-width: 1024px) {
+    @media (max-width: 1024px) {
         width: 40%;
     }
 `
@@ -31,8 +31,8 @@ const RightSidebar = styled.div`
 
 const StyledMain = styled.main`
     flex-grow: 1;
-    padding: 1.25rem 0 1.25rem 1.2rem;
-    margin-top: 4px;
+    padding: 0rem 0 1.25rem 1.2rem;
+    margin-top: 10px;
 `
 
 const PageBody = styled.div`
