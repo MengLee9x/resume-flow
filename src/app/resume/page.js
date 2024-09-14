@@ -2,9 +2,14 @@
 
 import React from 'react';
 import SectionHeader from "@/components/SectionHeader"
+import StyledWrapper from "@/components/common/MainContentWrapper"
 import styled from 'styled-components';
 
-
+const StyledResumeSection = styled.div`
+    border-radius: 0 0 16px 16px;
+    padding: 1.25rem 2.5rem;
+    background: #F8FBFB;
+`
 
 const ResumeSection = ({ title, items }) => (
     <div className="mb-6">
@@ -64,17 +69,22 @@ const ResumeTab = () => {
     const softSkills = ['Time Management', 'Mentorship', 'Impeccable Communication', 'Flexibility', 'Research', 'Writing'];
 
     return (
-        <div className="bg-white p-5 rounded-2xl">
-            <SectionHeader header="Resume" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <ResumeSection title="Education" items={education} />
-                <ResumeSection title="Experience" items={experience} />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <SkillSection title="Work Skills" skills={workSkills} />
-                <SkillSection title="Soft Skills" skills={softSkills} />
-            </div>
-        </div>
+        <>
+            <StyledWrapper bottomLeft="0" bottomRight="0">
+                <SectionHeader header="Resume" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <ResumeSection title="Education" items={education} />
+                    <ResumeSection title="Experience" items={experience} />
+                </div>
+            </StyledWrapper>
+            <StyledResumeSection>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <SkillSection title="Work Skills" skills={workSkills} />
+                    <SkillSection title="Soft Skills" skills={softSkills} />
+                </div>
+            </StyledResumeSection>
+        </>
+
     );
 };
 

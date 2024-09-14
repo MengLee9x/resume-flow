@@ -28,7 +28,7 @@ const CommonInfoArea = () => {
         height={200}
       />
 
-      <div className="bg-white rounded-2xl pt-28 pb-10 pl-7 pr-7 mt-[110px]">
+      <div className="bg-white rounded-2xl pt-28 pb-16 pl-7 pr-7 mt-[110px]">
         <div className="text-center mb-4 mt-4">
           <h2 className="text-2xl font-bold text-black">{name}</h2>
           <p className="text-gray-600 mt-3">{position}</p>

@@ -31,8 +31,7 @@ const RightSidebar = styled.div`
 
 const StyledMain = styled.main`
     flex-grow: 1;
-    border-radius: 16px;
-    padding: 1.25rem 0 1.25rem 4rem;
+    padding: 1.25rem 0 1.25rem 1.2rem;
     margin-top: 4px;
 `
 
@@ -90,7 +89,6 @@ export default function Layout({ children }) {
                             {children}
                         </StyledMain>
                     </RightSidebar>
-
                 </PageBody>
             </div>
         </Container>
