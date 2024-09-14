@@ -16,7 +16,7 @@ const CommonInfoArea = () => {
     fetchCommonInfo();
   }, []);
 
-  const { name, position, socialLinks, phone, email, location, profileImage } = commonInfo || {};
+  const { name, profession, socialLinks, phone, email, location, profileImage } = commonInfo || {};
 
   return (
     <div className='relative'>
@@ -28,10 +28,10 @@ const CommonInfoArea = () => {
         height={200}
       />
 
-      <div className="bg-white rounded-2xl pt-28 pb-16 pl-7 pr-7 mt-[110px]">
-        <div className="text-center mb-4 mt-4">
+      <div className="bg-white rounded-2xl pt-28 pb-16 px-7 mt-[98px]">
+        <div className="text-center mb-4 mt-2">
           <h2 className="text-2xl font-bold text-black">{name}</h2>
-          <p className="text-gray-600 mt-3">{position}</p>
+          <p className="text-gray-600 mt-3 text-base font-[500]">{profession}</p>
         </div>
 
         <div className="flex justify-center space-x-2 mb-6">

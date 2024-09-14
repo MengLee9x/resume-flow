@@ -12,7 +12,9 @@ const Header = ({ user, clearUser }) => {
     try {
       const response = await logout();
       if (response.success) {
+        console.log("response: ", response)
         clearUser();
+        console.log("clear")
         router.push("/login");
       }
     } catch (error) {
