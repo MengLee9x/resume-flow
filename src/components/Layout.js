@@ -68,11 +68,7 @@ export default function Layout({ children }) {
     }, []);
 
     if (!user || user.userName === "") {
-        return (<html lang="en">
-            <body>
-                {children}
-            </body>
-        </html>)
+        return children
     }
 
     return (

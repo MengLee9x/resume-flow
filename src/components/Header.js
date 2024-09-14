@@ -12,9 +12,7 @@ const Header = ({ user, clearUser }) => {
     try {
       const response = await logout();
       if (response.success) {
-        console.log("response: ", response)
         clearUser();
-        console.log("clear")
         router.push("/login");
       }
     } catch (error) {
@@ -28,26 +26,30 @@ const Header = ({ user, clearUser }) => {
 
   return (
     <header className="bg-background p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div>
-          {user && <>
-            <span className="text-black font-bold">{userName} </span>
-            <span className="text-gray-600">({userRole})</span>
-          </>}
-        </div>
-        <div className="flex items-center space-x-4">
+      <div className="flex justify-between mx-auto container">
+        <Image src="/images/userInfologo.svg" width={200} height={0} alt="userLogo" />
+        <div className="flex justify-end items-center">
+          <div className="mr-5">
+            {user && <>
+              <span className="text-black font-bold">{userName} </span>
+              <span className="text-gray-600">({userRole})</span>
+            </>}
+          </div>
+          <div className="flex items-center space-x-4">
 
-          <button className="w-12 h-12 rounded-full border-2 border-paleBlueGray flex items-center justify-center bg-paleBlue hover:bg-gray-100 transition-colors duration-200" onClick={handleDarkModeToggle}>
-            <Image src="/images/dark_mode.png" alt="Dark Mode" width={20} height={20} />
-          </button>
-          {user && <button
-            onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
-          >
-            Logout
-          </button>}
+            <button className="w-12 h-12 rounded-full border-[3px] border-paleBlueGray flex items-center justify-center bg-paleBlue hover:bg-gray-100 transition-colors duration-200" onClick={handleDarkModeToggle}>
+              <Image src="/images/dark_mode.png" alt="Dark Mode" width={18} height={18} />
+            </button>
+            {user && <button
+              onClick={handleLogout}
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+            >
+              Logout
+            </button>}
+          </div>
         </div>
       </div>
+
     </header>
   );
 };
